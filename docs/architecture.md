@@ -41,31 +41,39 @@ This design is appropriate for a small enterprise lab because it provides the co
 
 **Platform:** VMware Workstation
 
-**Planned Virtual Network:** VMnet2
+**Virtual Network:** VMnet2
 
-**Network Type:** NAT
+**Network Type:** Host-only
 
 **Subnet:** `10.50.10.0/24`
 
 **Subnet Mask:** `255.255.255.0`
 
-**Planned NAT Gateway:** `10.50.10.2`
+**VMware Host Adapter:** `10.50.10.1`
 
 **VMware DHCP:** Disabled
 
-VMnet2 will provide an isolated private network for the Active Directory lab while allowing controlled outbound connectivity through VMware NAT.
+VMnet2 provides an isolated private network for the Active Directory security lab.
 
-Infrastructure systems will use manually assigned IP addresses. No inbound NAT port forwarding will be configured.
+The host maintains connectivity to the lab through the VMware Network Adapter VMnet2 interface at `10.50.10.1`.
+
+VMware DHCP is disabled so infrastructure systems can use predictable manually assigned IP addresses.
+
+The Host-only design prevents the Active Directory lab network from being directly exposed to the physical LAN or Internet.
 
 ### Planned Addressing
 
 | Device | IP Address | Status |
 |---|---|---|
+| VMware Host Adapter | 10.50.10.1 | Configured |
 | DC01 | 10.50.10.10 | Reserved |
 | WS01 | 10.50.10.20 | Reserved |
 | SPLUNK01 | 10.50.10.30 | Reserved |
 | KALI01 | 10.50.10.40 | Reserved |
 
+### Network Evidence
+
+![VMware Host-Only Lab Network](../images/architecture/00-vmware-network-design.png)
 ---
 
 ## DNS Design
