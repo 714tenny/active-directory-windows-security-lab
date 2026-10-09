@@ -66,7 +66,7 @@ Detailed architecture documentation is located in:
 - [x] Initial repository structure created
 - [x] Architecture planned
 - [x] VMware network configured
-- [ ] Windows Server deployed
+- [x] Windows Server deployed
 - [ ] Active Directory Domain Services configured
 - [ ] Organizational Units configured
 - [ ] Users and security groups configured
