@@ -2,7 +2,7 @@
 
 ## Status
 
-**DC01 Promoted — Active Directory Forest and DNS Operational**
+**Active Directory Foundation Operational — OU Structure Configured**
 
 ## Purpose
 
@@ -124,7 +124,7 @@ KALI01 will normally remain powered off unless required for a controlled lab exe
 
 ## Organizational Unit Design
 
-Planned OU structure:
+Configured OU structure:
 
 ```text
 CORP
@@ -140,6 +140,10 @@ CORP
 └── Service Accounts
 ```
 
+The organizational structure was created in Active Directory Users and Computers under the `CORP` OU. Department-specific user OUs separate IT, Security, Finance, and HR identities, while workstation and server computer objects are separated to support targeted Group Policy and administrative controls later in the lab.
+
+![Active Directory OU Structure](../images/active-directory/05-active-directory-ou-structure.png)
+
 
 ---
 
@@ -149,7 +153,7 @@ DC01 has been deployed on the isolated VMnet2 network with the static address `1
 
 ![DC01 Static Network Validation](../images/active-directory/02-dc01-static-network.png)
 
-Active Directory Domain Services and DNS Server roles were installed successfully with the Windows Server management tools. Domain promotion is the next deployment step.
+Active Directory Domain Services and DNS Server roles were installed successfully with the Windows Server management tools. DC01 was then promoted as the first Domain Controller for the new forest.
 
 ![AD DS and DNS Role Installation](../images/active-directory/03-adds-dns-role-installation.png)
 

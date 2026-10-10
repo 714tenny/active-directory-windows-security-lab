@@ -2,9 +2,9 @@
 
 ## Project Status
 
-**Phase 0 — Architecture and Planning**
+**Phase 3 — Active Directory Organizational Structure**
 
-Deployment has not started.
+DC01 is operational as the Domain Controller for `corp.wulab.test`, and the initial enterprise OU structure has been configured.
 
 ## Overview
 
@@ -68,7 +68,7 @@ Detailed architecture documentation is located in:
 - [x] VMware network configured
 - [x] Windows Server deployed
 - [x] Active Directory Domain Services configured
-- [ ] Organizational Units configured
+- [x] Organizational Units configured
 - [ ] Users and security groups configured
 - [ ] Windows workstation domain joined
 - [ ] Authentication validated
