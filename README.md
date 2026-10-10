@@ -67,7 +67,7 @@ Detailed architecture documentation is located in:
 - [x] Architecture planned
 - [x] VMware network configured
 - [x] Windows Server deployed
-- [ ] Active Directory Domain Services configured
+- [x] Active Directory Domain Services configured
 - [ ] Organizational Units configured
 - [ ] Users and security groups configured
 - [ ] Windows workstation domain joined
