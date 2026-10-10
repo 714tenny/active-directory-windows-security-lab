@@ -2,7 +2,7 @@
 
 ## Status
 
-**Active Directory Foundation Operational — OU Structure Configured**
+**Domain Workstation Integrated — WS01 Placed in Workstations OU**
 
 ## Purpose
 
@@ -31,7 +31,7 @@ This design is appropriate for a small enterprise lab because it provides the co
 | Hostname | Operating System | Role | Planned IP Address |
 |---|---|---|---|
 | DC01 | Windows Server | Active Directory Domain Services, DNS, Group Policy, Authentication | 10.50.10.10 |
-| WS01 | Windows 11 | Domain Workstation / Security Testing Endpoint | 10.50.10.20 |
+| WS01 | Windows 11 Pro | Domain Workstation / Security Testing Endpoint | 10.50.10.20 |
 | SPLUNK01 | Existing Splunk Environment | Security Monitoring and Investigation | 10.50.10.30 |
 | KALI01 | Kali Linux | Optional Controlled Security Testing | 10.50.10.40 |
 
@@ -67,7 +67,7 @@ The Host-only design prevents the Active Directory lab network from being direct
 |---|---|---|
 | VMware Host Adapter | 10.50.10.1 | Configured |
 | DC01 | 10.50.10.10 | Reserved |
-| WS01 | 10.50.10.20 | Reserved |
+| WS01 | 10.50.10.20 | Configured |
 | SPLUNK01 | 10.50.10.30 | Reserved |
 | KALI01 | 10.50.10.40 | Reserved |
 
@@ -211,3 +211,12 @@ The initial role-based security groups were created in the `CORP\Groups` OU as G
 - `GG-Server-Admins`
 
 These groups provide the foundation for role-based access control and least-privilege administration.
+
+
+---
+
+## WS01 Domain Integration
+
+WS01 was configured with the static address `10.50.10.20/24`, uses DC01 at `10.50.10.10` for DNS, and was successfully joined to `corp.wulab.test`.
+
+Domain authentication was validated with the `WULAB\\amorgan` account, and the WS01 computer object was moved from the default Computers container into `CORP > Computers > Workstations` so workstation-focused Group Policy can be scoped cleanly.
