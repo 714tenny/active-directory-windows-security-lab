@@ -2,7 +2,7 @@
 
 ## Status
 
-**DC01 Deployed — AD DS and DNS Roles Installed — Domain Promotion Pending**
+**DC01 Promoted — Active Directory Forest and DNS Operational**
 
 ## Purpose
 
@@ -152,3 +152,22 @@ DC01 has been deployed on the isolated VMnet2 network with the static address `1
 Active Directory Domain Services and DNS Server roles were installed successfully with the Windows Server management tools. Domain promotion is the next deployment step.
 
 ![AD DS and DNS Role Installation](../images/active-directory/03-adds-dns-role-installation.png)
+
+
+---
+
+## Domain Controller Validation
+
+DC01 was promoted as the first Domain Controller for `corp.wulab.test` with the NetBIOS domain `WULAB`.
+
+Post-promotion validation confirmed:
+
+- `DC01.corp.wulab.test` is registered as a Global Catalog.
+- Active Directory Domain Services (`NTDS`) is running.
+- DNS Server (`DNS`) is running.
+- The `SYSVOL` share is published.
+- The `NETLOGON` share is published.
+
+These checks confirm that the new forest and Domain Controller are operational before organizational units, identities, groups, and client systems are added.
+
+![DC01 Domain Controller Validation](../images/active-directory/04-domain-controller-validation.png)
