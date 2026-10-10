@@ -220,3 +220,16 @@ These groups provide the foundation for role-based access control and least-priv
 WS01 was configured with the static address `10.50.10.20/24`, uses DC01 at `10.50.10.10` for DNS, and was successfully joined to `corp.wulab.test`.
 
 Domain authentication was validated with the `WULAB\\amorgan` account, and the WS01 computer object was moved from the default Computers container into `CORP > Computers > Workstations` so workstation-focused Group Policy can be scoped cleanly.
+
+
+---
+
+## Workstation Group Policy Baseline
+
+A Group Policy Object named `GPO-Workstation-Security-Baseline` was created and linked to:
+
+`CORP > Computers > Workstations`
+
+This scope ensures that the security baseline applies specifically to domain workstations such as WS01 without affecting servers or the Domain Controller.
+
+The GPO is currently being configured with workstation security controls.
