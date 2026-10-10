@@ -233,3 +233,11 @@ A Group Policy Object named `GPO-Workstation-Security-Baseline` was created and 
 This scope ensures that the security baseline applies specifically to domain workstations such as WS01 without affecting servers or the Domain Controller.
 
 The GPO is currently being configured with workstation security controls.
+
+### Configured Security Controls
+
+- Account lockout threshold: **5 invalid logon attempts**
+- Account lockout duration: **15 minutes**
+- Reset account lockout counter after: **15 minutes**
+- Limit local account use of blank passwords to console logon only: **Enabled**
+- Interactive logon: Don't display last signed-in: **Enabled**
