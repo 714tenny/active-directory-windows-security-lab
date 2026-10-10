@@ -2,9 +2,9 @@
 
 ## Project Status
 
-**Phase 4 — Identity and Group Membership**
+**Phase 5 — Domain Workstation Integration**
 
-DC01 is operational as the Domain Controller for `corp.wulab.test`. Organizational Units, departmental user accounts, and role-based security group membership are configured.
+DC01 is operational as the Domain Controller for `corp.wulab.test`. WS01 has been joined to the domain and successful domain-user authentication has been validated.
 
 ## Overview
 
@@ -70,8 +70,8 @@ Detailed architecture documentation is located in:
 - [x] Active Directory Domain Services configured
 - [x] Organizational Units configured
 - [x] Users and security groups configured
-- [ ] Windows workstation domain joined
-- [ ] Authentication validated
+- [x] Windows workstation domain joined
+- [x] Authentication validated
 - [ ] Group Policy security controls implemented
 - [ ] Least-privilege model implemented
 - [ ] Windows security auditing configured
