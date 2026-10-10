@@ -73,7 +73,7 @@ The Host-only design prevents the Active Directory lab network from being direct
 
 ### Network Evidence
 
-![VMware Host-Only Lab Network](../images/architecture/00-vmware-network-design.png)
+![VMware Host-Only Lab Network](../images/00-vmware-network-design.png)
 ---
 
 ## DNS Design
