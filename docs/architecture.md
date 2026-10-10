@@ -2,7 +2,7 @@
 
 ## Status
 
-**Architecture Planned — Deployment Not Started**
+**DC01 Deployed — AD DS and DNS Roles Installed — Domain Promotion Pending**
 
 ## Purpose
 
@@ -138,3 +138,17 @@ CORP
 │   └── Servers
 ├── Groups
 └── Service Accounts
+```
+
+
+---
+
+## DC01 Deployment Evidence
+
+DC01 has been deployed on the isolated VMnet2 network with the static address `10.50.10.10/24`. The address state was validated as `Preferred` before Active Directory role installation.
+
+![DC01 Static Network Validation](../images/active-directory/02-dc01-static-network.png)
+
+Active Directory Domain Services and DNS Server roles were installed successfully with the Windows Server management tools. Domain promotion is the next deployment step.
+
+![AD DS and DNS Role Installation](../images/active-directory/03-adds-dns-role-installation.png)
