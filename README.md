@@ -2,9 +2,9 @@
 
 ## Project Status
 
-**Phase 5 — Domain Workstation Integration**
+**Phase 6 — Group Policy Security Hardening**
 
-DC01 is operational as the Domain Controller for `corp.wulab.test`. WS01 has been joined to the domain and successful domain-user authentication has been validated.
+DC01 and WS01 are fully integrated with `corp.wulab.test`. A workstation security baseline GPO has been created and linked to the Workstations OU; security settings are being configured.
 
 ## Overview
 
