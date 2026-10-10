@@ -175,3 +175,39 @@ Post-promotion validation confirmed:
 These checks confirm that the new forest and Domain Controller are operational before organizational units, identities, groups, and client systems are added.
 
 ![DC01 Domain Controller Validation](../images/active-directory/04-domain-controller-validation.png)
+
+
+---
+
+## Identity and Group Membership
+
+Four departmental user accounts were created in their corresponding Organizational Units:
+
+| Department | User | SamAccountName | Security Group |
+|---|---|---|---|
+| IT | Alex Morgan | `amorgan` | `GG-IT-Users` |
+| Security | Jordan Lee | `jlee` | `GG-Security-Analysts` |
+| Finance | Taylor Davis | `tdavis` | `GG-Finance-Users` |
+| HR | Casey Brooks | `cbrooks` | `GG-HR-Users` |
+
+Group membership was assigned using Active Directory PowerShell cmdlets and validated with `Get-ADGroupMember`.
+
+This establishes the initial role-based access model that will later be used for Group Policy, workstation administration, server administration, authentication monitoring, and least-privilege testing.
+
+![Active Directory User and Group Membership Validation](../images/active-directory/07-user-group-membership-validation.png)
+
+
+---
+
+## Security Group Design
+
+The initial role-based security groups were created in the `CORP\Groups` OU as Global Security groups:
+
+- `GG-IT-Users`
+- `GG-Security-Analysts`
+- `GG-Finance-Users`
+- `GG-HR-Users`
+- `GG-Workstation-Admins`
+- `GG-Server-Admins`
+
+These groups provide the foundation for role-based access control and least-privilege administration.

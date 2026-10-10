@@ -2,9 +2,9 @@
 
 ## Project Status
 
-**Phase 3 — Active Directory Organizational Structure**
+**Phase 4 — Identity and Group Membership**
 
-DC01 is operational as the Domain Controller for `corp.wulab.test`, and the initial enterprise OU structure has been configured.
+DC01 is operational as the Domain Controller for `corp.wulab.test`. Organizational Units, departmental user accounts, and role-based security group membership are configured.
 
 ## Overview
 
@@ -69,7 +69,7 @@ Detailed architecture documentation is located in:
 - [x] Windows Server deployed
 - [x] Active Directory Domain Services configured
 - [x] Organizational Units configured
-- [ ] Users and security groups configured
+- [x] Users and security groups configured
 - [ ] Windows workstation domain joined
 - [ ] Authentication validated
 - [ ] Group Policy security controls implemented
