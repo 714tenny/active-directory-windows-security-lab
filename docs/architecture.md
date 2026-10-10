@@ -2,7 +2,7 @@
 
 ## Status
 
-**Domain Workstation Integrated — WS01 Placed in Workstations OU**
+**Workstation Security Baseline and Audit Policy Validated**
 
 ## Purpose
 
@@ -212,6 +212,8 @@ The initial role-based security groups were created in the `CORP\Groups` OU as G
 
 These groups provide the foundation for role-based access control and least-privilege administration.
 
+![Active Directory Security Groups](../images/active-directory/06-security-groups.png)
+
 
 ---
 
@@ -220,6 +222,12 @@ These groups provide the foundation for role-based access control and least-priv
 WS01 was configured with the static address `10.50.10.20/24`, uses DC01 at `10.50.10.10` for DNS, and was successfully joined to `corp.wulab.test`.
 
 Domain authentication was validated with the `WULAB\\amorgan` account, and the WS01 computer object was moved from the default Computers container into `CORP > Computers > Workstations` so workstation-focused Group Policy can be scoped cleanly.
+
+![WS01 Network and DNS Validation](../images/active-directory/08-ws01-network-validation.png)
+
+![WS01 Domain Authentication](../images/active-directory/09-ws01-domain-authentication.png)
+
+![WS01 Workstations OU Placement](../images/active-directory/10-ws01-workstations-ou.png)
 
 
 ---
@@ -232,6 +240,8 @@ A Group Policy Object named `GPO-Workstation-Security-Baseline` was created and 
 
 This scope ensures that the security baseline applies specifically to domain workstations such as WS01 without affecting servers or the Domain Controller.
 
+![Workstation Security Baseline GPO Link](../images/active-directory/11-workstation-gpo-link.png)
+
 The GPO is currently being configured with workstation security controls.
 
 ### Configured Security Controls
@@ -241,6 +251,12 @@ The GPO is currently being configured with workstation security controls.
 - Reset account lockout counter after: **15 minutes**
 - Limit local account use of blank passwords to console logon only: **Enabled**
 - Interactive logon: Don't display last signed-in: **Enabled**
+
+![Account Lockout Policy](../images/active-directory/12-account-lockout-policy.png)
+
+![Blank Password Security Option](../images/active-directory/13-blank-password-policy.png)
+
+![Interactive Logon Security Option](../images/active-directory/13-interactive-logon-security-options.png)
 
 
 ---
@@ -258,5 +274,11 @@ Validated audit subcategories include:
 - User Account Management: **Success and Failure**
 
 The GPO also enables command-line inclusion for process creation events and forces Advanced Audit Policy subcategory settings to override legacy category settings.
+
+![Advanced Audit Policy Configuration](../images/active-directory/14-audit-policy-gpo.png)
+
+![Audit Policy Validation Part 1](../images/active-directory/15-audit-policy-validation-1.png)
+
+![Audit Policy Validation Part 2](../images/active-directory/16-audit-policy-validation-2.png)
 
 This provides the Windows Security telemetry required for later authentication, process, identity-change, privilege, and incident investigations.
