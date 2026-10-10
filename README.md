@@ -4,7 +4,7 @@
 
 **Phase 6 — Group Policy Security Hardening**
 
-DC01 and WS01 are fully integrated with `corp.wulab.test`. A workstation security baseline GPO has been created and linked to the Workstations OU; security settings are being configured.
+DC01 and WS01 are fully integrated with `corp.wulab.test`. The workstation security baseline GPO is linked to the Workstations OU, with account lockout and interactive-logon protections now configured.
 
 ## Overview
 
