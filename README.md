@@ -2,9 +2,9 @@
 
 ## Project Status
 
-**Phase 6 — Group Policy Security Hardening**
+**Phase 7 — Least-Privilege Administration**
 
-DC01 and WS01 are fully integrated with `corp.wulab.test`. The workstation security baseline GPO is linked to the Workstations OU, with account lockout and interactive-logon protections now configured.
+DC01 and WS01 are fully integrated with `corp.wulab.test`. The workstation security baseline and Advanced Audit Policy have been applied and validated on WS01; least-privilege administration is the next phase.
 
 ## Overview
 
@@ -74,7 +74,7 @@ Detailed architecture documentation is located in:
 - [x] Authentication validated
 - [ ] Group Policy security controls implemented
 - [ ] Least-privilege model implemented
-- [ ] Windows security auditing configured
+- [x] Windows security auditing configured
 - [ ] Sysmon deployed
 - [ ] Splunk log forwarding configured
 - [ ] Security scenarios investigated
