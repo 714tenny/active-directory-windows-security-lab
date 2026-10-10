@@ -241,3 +241,22 @@ The GPO is currently being configured with workstation security controls.
 - Reset account lockout counter after: **15 minutes**
 - Limit local account use of blank passwords to console logon only: **Enabled**
 - Interactive logon: Don't display last signed-in: **Enabled**
+
+
+---
+
+## Workstation Audit Policy Validation
+
+The workstation security baseline was applied to WS01 with `gpupdate /force` and validated using `auditpol`.
+
+Validated audit subcategories include:
+
+- Logon: **Success and Failure**
+- Special Logon: **Success and Failure**
+- Process Creation: **Success**
+- Security Group Management: **Success and Failure**
+- User Account Management: **Success and Failure**
+
+The GPO also enables command-line inclusion for process creation events and forces Advanced Audit Policy subcategory settings to override legacy category settings.
+
+This provides the Windows Security telemetry required for later authentication, process, identity-change, privilege, and incident investigations.
