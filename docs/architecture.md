@@ -291,3 +291,12 @@ This provides the Windows Security telemetry required for later authentication, 
 A separate privileged identity, `adm-amorgan`, was created for administrative tasks and added to the `GG-Workstation-Admins` security group. The standard `amorgan` account remains separate from privileged administration.
 
 The next step is to grant the `GG-Workstation-Admins` group local administrator rights on domain workstations through Group Policy and validate the result on WS01.
+
+
+### Workstation Administrator Enforcement
+
+The `GG-Workstation-Admins` domain security group was enforced as a member of the local `Administrators` group on WS01 through Group Policy Restricted Groups.
+
+Validation on WS01 confirmed that the local Administrators group contains `WULAB\GG-Workstation-Admins` while the standard `amorgan` identity remains separate from the privileged `adm-amorgan` account.
+
+![Least-Privilege Local Administrator Validation](../images/active-directory/17-least-privilege-local-admin-validation.png)
