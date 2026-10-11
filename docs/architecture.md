@@ -282,3 +282,12 @@ The GPO also enables command-line inclusion for process creation events and forc
 ![Audit Policy Validation Part 2](../images/active-directory/16-audit-policy-validation-2.png)
 
 This provides the Windows Security telemetry required for later authentication, process, identity-change, privilege, and incident investigations.
+
+
+---
+
+## Least-Privilege Administration
+
+A separate privileged identity, `adm-amorgan`, was created for administrative tasks and added to the `GG-Workstation-Admins` security group. The standard `amorgan` account remains separate from privileged administration.
+
+The next step is to grant the `GG-Workstation-Admins` group local administrator rights on domain workstations through Group Policy and validate the result on WS01.
