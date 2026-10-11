@@ -2,9 +2,9 @@
 
 ## Project Status
 
-**Phase 7 — Least-Privilege Administration**
+**Phase 8 — Sysmon Deployment**
 
-DC01 and WS01 are fully integrated with `corp.wulab.test`. The workstation security baseline and Advanced Audit Policy have been applied and validated on WS01; least-privilege administration is the next phase.
+DC01 and WS01 are fully integrated with `corp.wulab.test`. Workstation auditing and least-privilege administration are validated; Sysmon deployment is the next phase.
 
 ## Overview
 
@@ -73,7 +73,7 @@ Detailed architecture documentation is located in:
 - [x] Windows workstation domain joined
 - [x] Authentication validated
 - [ ] Group Policy security controls implemented
-- [ ] Least-privilege model implemented
+- [x] Least-privilege model implemented
 - [x] Windows security auditing configured
 - [ ] Sysmon deployed
 - [ ] Splunk log forwarding configured
