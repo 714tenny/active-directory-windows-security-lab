@@ -300,3 +300,14 @@ The `GG-Workstation-Admins` domain security group was enforced as a member of th
 Validation on WS01 confirmed that the local Administrators group contains `WULAB\GG-Workstation-Admins` while the standard `amorgan` identity remains separate from the privileged `adm-amorgan` account.
 
 ![Least-Privilege Local Administrator Validation](../images/active-directory/17-least-privilege-local-admin-validation.png)
+
+
+---
+
+## Sysmon Deployment
+
+Sysmon was installed on WS01 using a local configuration file stored under `C:\Tools\Sysmon`.
+
+Validation confirmed that the `Microsoft-Windows-Sysmon/Operational` log is producing telemetry on WS01, including process lifecycle events and file-related events. The host reports `WS01.corp.wulab.test` and events are generated under both `NT AUTHORITY\SYSTEM` and the domain user context.
+
+This telemetry will be forwarded to Splunk in the next phase for centralized monitoring and investigation.
