@@ -311,3 +311,28 @@ Sysmon was installed on WS01 using a local configuration file stored under `C:\T
 Validation confirmed that the `Microsoft-Windows-Sysmon/Operational` log is producing telemetry on WS01, including process lifecycle events and file-related events. The host reports `WS01.corp.wulab.test` and events are generated under both `NT AUTHORITY\SYSTEM` and the domain user context.
 
 This telemetry will be forwarded to Splunk in the next phase for centralized monitoring and investigation.
+
+
+---
+
+## Splunk Log Forwarding
+
+SPLUNK01 was connected to the isolated Active Directory lab network at `10.50.10.30/24`, and Splunk Enterprise was configured to receive Universal Forwarder traffic on TCP `9997`.
+
+WS01 was configured with the Splunk Universal Forwarder and validated with an established TCP session from `10.50.10.20` to `10.50.10.30:9997`.
+
+The forwarder collects the following Windows event channels:
+
+- `Security` -> Splunk index `windows`
+- `Microsoft-Windows-Sysmon/Operational` -> Splunk index `sysmon`
+
+The Splunk Forwarder service on WS01 was changed to run as `LocalSystem` after the default virtual service account was unable to subscribe to the Sysmon Operational event channel.
+
+Validation in Splunk confirmed:
+
+- `host=WS01`
+- `XmlWinEventLog:Security` events in the `windows` index
+- `XmlWinEventLog:Microsoft-Windows-Sysmon/Operational` events in the `sysmon` index
+- More than 600 Sysmon events visible during validation
+
+This completes centralized Windows Security and Sysmon telemetry forwarding for WS01 and provides the data source required for the next phase of controlled security scenario investigation.
