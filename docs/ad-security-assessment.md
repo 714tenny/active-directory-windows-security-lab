@@ -57,16 +57,6 @@ The `GG-Workstation-Admins` group contains only the separate privileged identity
 
 **Assessment:** Supports least privilege and separation between `amorgan` and `adm-amorgan`.
 
-## Remaining Validation
-
-Before closing the assessment, validate:
-
-- the `adm-amorgan` password-expiration setting
-- the effective default domain password policy
-
-These checks will be used to finalize findings and perform remediation validation.
-
-
 ## Remediation and Validation
 
 The assessment identified three remediation targets:
@@ -80,10 +70,10 @@ The following remediations were applied on DC01:
 ```powershell
 Set-ADUser Administrator -PasswordNeverExpires $false
 
-Set-ADDefaultDomainPasswordPolicy -Identity "corp.wulab.test" \
-  -MinPasswordLength 14 \
-  -LockoutThreshold 5 \
-  -LockoutDuration (New-TimeSpan -Minutes 15) \
+Set-ADDefaultDomainPasswordPolicy -Identity "corp.wulab.test" `
+  -MinPasswordLength 14 `
+  -LockoutThreshold 5 `
+  -LockoutDuration (New-TimeSpan -Minutes 15) `
   -LockoutObservationWindow (New-TimeSpan -Minutes 15)
 ```
 
