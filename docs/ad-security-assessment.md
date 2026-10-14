@@ -65,3 +65,40 @@ Before closing the assessment, validate:
 - the effective default domain password policy
 
 These checks will be used to finalize findings and perform remediation validation.
+
+
+## Remediation and Validation
+
+The assessment identified three remediation targets:
+
+1. The built-in domain `Administrator` account had `PasswordNeverExpires = True`.
+2. The default domain minimum password length was `7`.
+3. The default domain account lockout threshold was `0`, meaning domain accounts were not locked out after repeated failed attempts.
+
+The following remediations were applied on DC01:
+
+```powershell
+Set-ADUser Administrator -PasswordNeverExpires $false
+
+Set-ADDefaultDomainPasswordPolicy -Identity "corp.wulab.test" \
+  -MinPasswordLength 14 \
+  -LockoutThreshold 5 \
+  -LockoutDuration (New-TimeSpan -Minutes 15) \
+  -LockoutObservationWindow (New-TimeSpan -Minutes 15)
+```
+
+Validation confirmed:
+
+- Built-in `Administrator`: `PasswordNeverExpires = False`
+- Minimum password length: `14`
+- Password history count: `24`
+- Maximum password age: `42 days`
+- Account lockout threshold: `5`
+- Account lockout duration: `15 minutes`
+- Account lockout observation window: `15 minutes`
+
+The separate privileged workstation administrator account `adm-amorgan` was also validated as enabled with `PasswordNeverExpires = False`.
+
+### Assessment Outcome
+
+The observed privileged-group memberships were appropriately constrained, standard users did not have password-expiration exemptions, and the identified password/lockout weaknesses were remediated and verified. The AD security assessment and remediation-validation phase is complete.
