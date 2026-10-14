@@ -73,3 +73,34 @@ Observed result:
 ### Result
 
 The test confirmed that privileged account usage on WS01 is visible in Splunk through both successful logon telemetry (4624) and special-privilege assignment telemetry (4672). This supports monitoring of privileged access and separation of standard and administrative identities.
+
+
+## Scenario 3 — Local Administrators Group Change
+
+### Objective
+
+Validate that local privileged-group membership changes on WS01 are audited and visible in Splunk.
+
+### Controlled Test
+
+The domain account `WULAB\jlee` was temporarily added to the local `Administrators` group on WS01 and then immediately removed.
+
+### Splunk Validation
+
+The following search was used:
+
+```spl
+index=windows host=WS01 (EventCode=4732 OR EventCode=4733) earliest=-15m
+| table _time EventCode SubjectUserName MemberName TargetUserName
+```
+
+Observed results:
+
+- Event ID 4732 — member added to the local `Administrators` group
+- Event ID 4733 — member removed from the local `Administrators` group
+- Subject user: `adm-amorgan`
+- Target group: `Administrators`
+
+### Result
+
+The test confirmed that privileged local group membership changes on WS01 are visible in centralized Windows Security telemetry. This provides evidence for monitoring changes to local administrative access.
