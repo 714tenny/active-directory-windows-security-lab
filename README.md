@@ -2,9 +2,9 @@
 
 ## Project Status
 
-**Phase 13 — Final Incident Investigation**
+**Phase 14 — Final Project Audit**
 
-DC01 and WS01 are fully integrated with `corp.wulab.test`. Windows Security and Sysmon telemetry from WS01 are now being forwarded to Splunk on SPLUNK01 and validated in dedicated indexes. The PowerShell security audit is complete. DC01 and WS01 security configuration, privileged-group membership, password policy, Splunk Forwarder state, and service identity were validated. The next phase is the final incident investigation.
+DC01 and WS01 are fully integrated with `corp.wulab.test`. Windows Security and Sysmon telemetry from WS01 are now being forwarded to Splunk on SPLUNK01 and validated in dedicated indexes. The final incident investigation is complete. Windows Security and Sysmon telemetry were correlated to reconstruct privileged command execution and local Administrators group changes on WS01. The remaining phase is the final project and GitHub audit.
 
 ## Overview
 
@@ -81,7 +81,7 @@ Detailed architecture documentation is located in:
 - [x] Active Directory security assessment completed
 - [x] Findings remediated and validated
 - [x] PowerShell security audit completed
-- [ ] Final incident investigation completed
+- [x] Final incident investigation completed
 - [ ] Final project audit completed
 
 ## Security Focus
