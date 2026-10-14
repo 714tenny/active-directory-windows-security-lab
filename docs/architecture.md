@@ -2,7 +2,7 @@
 
 ## Status
 
-**Workstation Security Baseline and Audit Policy Validated**
+**Complete — Enterprise Windows Security Lab Validated**
 
 ## Purpose
 
@@ -28,12 +28,12 @@ This design is appropriate for a small enterprise lab because it provides the co
 
 ## Systems
 
-| Hostname | Operating System | Role | Planned IP Address |
+| Hostname | Operating System | Role | IP Address |
 |---|---|---|---|
 | DC01 | Windows Server | Active Directory Domain Services, DNS, Group Policy, Authentication | 10.50.10.10 |
 | WS01 | Windows 11 Pro | Domain Workstation / Security Testing Endpoint | 10.50.10.20 |
 | SPLUNK01 | Existing Splunk Environment | Security Monitoring and Investigation | 10.50.10.30 |
-| KALI01 | Kali Linux | Optional Controlled Security Testing | 10.50.10.40 |
+| KALI01 | Kali Linux | Optional Controlled Security Testing — not required for final build | 10.50.10.40 (planned) |
 
 ---
 
@@ -61,24 +61,21 @@ VMware DHCP is disabled so infrastructure systems can use predictable manually a
 
 The Host-only design prevents the Active Directory lab network from being directly exposed to the physical LAN or Internet.
 
-### Planned Addressing
+### Addressing
 
 | Device | IP Address | Status |
 |---|---|---|
 | VMware Host Adapter | 10.50.10.1 | Configured |
-| DC01 | 10.50.10.10 | Reserved |
+| DC01 | 10.50.10.10 | Configured |
 | WS01 | 10.50.10.20 | Configured |
-| SPLUNK01 | 10.50.10.30 | Reserved |
-| KALI01 | 10.50.10.40 | Reserved |
+| SPLUNK01 | 10.50.10.30 | Configured |
+| KALI01 | 10.50.10.40 | Optional / not deployed |
 
-### Network Evidence
-
-![VMware Host-Only Lab Network](../images/00-vmware-network-design.png)
 ---
 
 ## DNS Design
 
-DC01 will host DNS for the Active Directory domain.
+DC01 hosts DNS for the Active Directory domain.
 
 Domain-joined workstations will use:
 
@@ -242,7 +239,7 @@ This scope ensures that the security baseline applies specifically to domain wor
 
 ![Workstation Security Baseline GPO Link](../images/active-directory/11-workstation-gpo-link.png)
 
-The GPO is currently being configured with workstation security controls.
+The GPO was completed and validated with workstation security controls.
 
 ### Configured Security Controls
 
@@ -290,7 +287,6 @@ This provides the Windows Security telemetry required for later authentication, 
 
 A separate privileged identity, `adm-amorgan`, was created for administrative tasks and added to the `GG-Workstation-Admins` security group. The standard `amorgan` account remains separate from privileged administration.
 
-The next step is to grant the `GG-Workstation-Admins` group local administrator rights on domain workstations through Group Policy and validate the result on WS01.
 
 
 ### Workstation Administrator Enforcement
@@ -299,7 +295,6 @@ The `GG-Workstation-Admins` domain security group was enforced as a member of th
 
 Validation on WS01 confirmed that the local Administrators group contains `WULAB\GG-Workstation-Admins` while the standard `amorgan` identity remains separate from the privileged `adm-amorgan` account.
 
-![Least-Privilege Local Administrator Validation](../images/active-directory/17-least-privilege-local-admin-validation.png)
 
 
 ---
@@ -310,7 +305,7 @@ Sysmon was installed on WS01 using a local configuration file stored under `C:\T
 
 Validation confirmed that the `Microsoft-Windows-Sysmon/Operational` log is producing telemetry on WS01, including process lifecycle events and file-related events. The host reports `WS01.corp.wulab.test` and events are generated under both `NT AUTHORITY\SYSTEM` and the domain user context.
 
-This telemetry will be forwarded to Splunk in the next phase for centralized monitoring and investigation.
+This telemetry is forwarded to Splunk for centralized monitoring and investigation.
 
 
 ---
@@ -336,3 +331,24 @@ Validation in Splunk confirmed:
 - More than 600 Sysmon events visible during validation
 
 This completes centralized Windows Security and Sysmon telemetry forwarding for WS01 and provides the data source required for the next phase of controlled security scenario investigation.
+
+
+---
+
+## Final Security Posture
+
+The completed lab includes:
+
+- Domain authentication and DNS through DC01
+- Departmental OUs and role-based security groups
+- Separate standard and privileged user identities
+- Workstation administrator enforcement through Group Policy Restricted Groups
+- Account lockout, interactive-logon, blank-password, and advanced audit controls
+- Sysmon endpoint telemetry on WS01
+- Splunk forwarding of Windows Security and Sysmon events
+- Hardened default domain password and lockout policy
+- PowerShell-based security validation
+- Controlled authentication and privileged-group investigation scenarios
+- Final incident reconstruction using Windows Security and Sysmon evidence
+
+Detailed assessment, investigation, and validation results are maintained in the remaining documents under `docs/`.
