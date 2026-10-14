@@ -35,3 +35,41 @@ Observed results:
 ### Result
 
 The test confirmed that domain authentication activity from WS01 is being audited and forwarded to Splunk successfully. This provides the telemetry required for authentication monitoring and failed-logon investigation.
+
+
+## Scenario 2 — Privileged Domain Logon
+
+### Objective
+
+Validate that use of the separate privileged identity `WULAB\adm-amorgan` is visible in centralized Windows Security telemetry.
+
+### Controlled Test
+
+The privileged account `WULAB\adm-amorgan` was used to sign in to WS01.
+
+### Splunk Validation
+
+Successful logon activity was confirmed with:
+
+```spl
+index=windows host=WS01 EventCode=4624 TargetUserName="adm-amorgan" earliest=-2h
+| table _time TargetUserName TargetDomainName LogonType IpAddress
+```
+
+Observed results included two Event ID 4624 records for `adm-amorgan` in the `WULAB` domain. The events reported Logon Type 11 and loopback address `::1`.
+
+Special-privilege assignment was confirmed with:
+
+```spl
+index=windows host=WS01 EventCode=4672 SubjectUserName="adm-amorgan" earliest=-2h
+| table _time SubjectUserName SubjectDomainName
+```
+
+Observed result:
+
+- Event ID 4672 for `adm-amorgan`
+- Subject domain: `WULAB`
+
+### Result
+
+The test confirmed that privileged account usage on WS01 is visible in Splunk through both successful logon telemetry (4624) and special-privilege assignment telemetry (4672). This supports monitoring of privileged access and separation of standard and administrative identities.
