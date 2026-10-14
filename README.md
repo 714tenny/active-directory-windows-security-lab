@@ -2,9 +2,9 @@
 
 ## Project Status
 
-**Phase 10 — Security Scenario Investigation**
+**Phase 11 — Active Directory Security Assessment**
 
-DC01 and WS01 are fully integrated with `corp.wulab.test`. Windows Security and Sysmon telemetry from WS01 are now being forwarded to Splunk on SPLUNK01 and validated in dedicated indexes. The next phase is controlled security scenario investigation.
+DC01 and WS01 are fully integrated with `corp.wulab.test`. Windows Security and Sysmon telemetry from WS01 are now being forwarded to Splunk on SPLUNK01 and validated in dedicated indexes. Controlled authentication and privilege-change scenarios have been investigated in Splunk. The next phase is an Active Directory security assessment.
 
 ## Overview
 
@@ -77,7 +77,7 @@ Detailed architecture documentation is located in:
 - [x] Windows security auditing configured
 - [x] Sysmon deployed
 - [x] Splunk log forwarding configured
-- [ ] Security scenarios investigated
+- [x] Security scenarios investigated
 - [ ] Active Directory security assessment completed
 - [ ] Findings remediated and validated
 - [ ] PowerShell security audit completed
