@@ -2,9 +2,9 @@
 
 ## Project Status
 
-**Phase 9 — Splunk Log Forwarding**
+**Phase 10 — Security Scenario Investigation**
 
-DC01 and WS01 are fully integrated with `corp.wulab.test`. Sysmon is installed and producing operational telemetry on WS01; Splunk log forwarding is the next phase.
+DC01 and WS01 are fully integrated with `corp.wulab.test`. Windows Security and Sysmon telemetry from WS01 are now being forwarded to Splunk on SPLUNK01 and validated in dedicated indexes. The next phase is controlled security scenario investigation.
 
 ## Overview
 
@@ -76,7 +76,7 @@ Detailed architecture documentation is located in:
 - [x] Least-privilege model implemented
 - [x] Windows security auditing configured
 - [x] Sysmon deployed
-- [ ] Splunk log forwarding configured
+- [x] Splunk log forwarding configured
 - [ ] Security scenarios investigated
 - [ ] Active Directory security assessment completed
 - [ ] Findings remediated and validated
