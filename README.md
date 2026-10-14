@@ -72,7 +72,7 @@ Detailed architecture documentation is located in:
 - [x] Users and security groups configured
 - [x] Windows workstation domain joined
 - [x] Authentication validated
-- [ ] Group Policy security controls implemented
+- [x] Group Policy security controls implemented
 - [x] Least-privilege model implemented
 - [x] Windows security auditing configured
 - [x] Sysmon deployed
